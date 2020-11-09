@@ -12,7 +12,7 @@ header_font = "Arial-16"
 window_width = 800
 """Ширина окна"""
 
-window_height = 800
+window_height = 600
 """Высота окна"""
 
 scale_factor = None
@@ -54,7 +54,7 @@ def scale_y(y):
     **y** — y-координата модели.
     """
 
-    return -(int(y*scale_factor) + window_height//2)  # FIXME--: not done yet
+    return -int(y * scale_factor) + window_height // 2  # FIXME--: not done yet
 
 
 def create_star_image(space, star):
@@ -70,6 +70,7 @@ def create_star_image(space, star):
     y = scale_y(star.y)
     r = star.R
     star.image = space.create_oval([x - r, y - r], [x + r, y + r], fill=star.color)
+    #print(x, y, r, star.color)
 
 
 def create_planet_image(space, planet):

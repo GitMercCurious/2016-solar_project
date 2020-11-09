@@ -1,6 +1,7 @@
 # coding: utf-8
 # license: GPLv3
 
+import numpy
 from solar_objects import Star, Planet
 
 def read_space_objects_data_from_file(input_filename):
@@ -45,15 +46,16 @@ def parse_star_parameters(line, star):
     **line** — строка с описание звезды.
     **star** — объект звезды.
     """
-    parametres = line.split().lower()
-    star.type = parametres[1]
-    star.R = int(parametres[2])
-    star.color = parametres[3]
-    star.m = float(parametres[4])
-    star.x = float(parametres[5])
-    star.y = float(parametres[6])
-    star.Vx = float(parametres[7])
-    star.Vy = float(parametres[8])
+    parametres = line.split()
+    parametres = list(map(lambda s: s.lower(), parametres))
+    star.type = parametres[0]
+    star.R = int(parametres[1])
+    star.color = parametres[2]
+    star.m = float(parametres[3])
+    star.x = float(parametres[4])
+    star.y = float(parametres[5])
+    star.Vx = float(parametres[6])
+    star.Vy = float(parametres[7])
 
 
     pass  # FIXME: not done yet--
@@ -73,15 +75,16 @@ def parse_planet_parameters(line, planet):
     **line** — строка с описание планеты.
     **planet** — объект планеты.
     """
-    parametres = line.split().lower()
-    planet.type = parametres[1]
-    planet.R = int(parametres[2])
-    planet.color = parametres[3]
-    planet.m = float(parametres[4])
-    planet.x = float(parametres[5])
-    planet.y = float(parametres[6])
-    planet.Vx = float(parametres[7])
-    planet.Vy = float(parametres[8])
+    parametres = line.split()
+    parametres = list(map(lambda s: s.lower(), parametres))
+    planet.type = parametres[0]
+    planet.R = int(parametres[1])
+    planet.color = parametres[2]
+    planet.m = float(parametres[3])
+    planet.x = float(parametres[4])
+    planet.y = float(parametres[5])
+    planet.Vx = float(parametres[6])
+    planet.Vy = float(parametres[7])
     pass  # FIXME: not done yet...--
 
 

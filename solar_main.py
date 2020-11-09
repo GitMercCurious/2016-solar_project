@@ -25,6 +25,9 @@ time_step = None
 space_objects = []
 """Список космических объектов."""
 
+FPS = 200
+"Мксимальне количество обновлений экрана"
+
 
 def execution():
     """Функция исполнения -- выполняется циклически, вызывая обработку всех небесных тел,
@@ -41,7 +44,7 @@ def execution():
     displayed_time.set("%.1f" % physical_time + " seconds gone")
 
     if perform_execution:
-        space.after(101 - int(time_speed.get()), execution)
+        space.after(FPS + 1 - int(time_speed.get()), execution)
 
 
 def start_execution():
@@ -132,7 +135,7 @@ def main():
     time_step_entry.pack(side=tkinter.LEFT)
 
     time_speed = tkinter.DoubleVar()
-    scale = tkinter.Scale(frame, variable=time_speed, orient=tkinter.HORIZONTAL)
+    scale = tkinter.Scale(frame, from_=0, to=FPS, variable=time_speed, orient=tkinter.HORIZONTAL)
     scale.pack(side=tkinter.LEFT)
 
     load_file_button = tkinter.Button(frame, text="Open file...", command=open_file_dialog)
@@ -147,6 +150,7 @@ def main():
 
     root.mainloop()
     print('Modelling finished!')
+
 
 if __name__ == "__main__":
     main()
